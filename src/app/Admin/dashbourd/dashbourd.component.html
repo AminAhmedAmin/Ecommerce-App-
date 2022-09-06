@@ -1,0 +1,165 @@
+<section  style="background-color: #fcd9cd;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+
+
+        <form [formGroup]="form">
+          <div class="row">
+                  <div class="col-md-3">
+                      <label for="">Start Date</label>
+                      <input type="date" formControlName="start" class="form-control">
+                  </div>
+                  <div class="col-md-3">
+                      <label for="">End Date</label>
+                      <input type="date"  formControlName="end" class="form-control" >
+                  </div>
+                  <div class="col-md-2 d-flex align-items-end">
+                      <button class="btn btn-success" (click)="applyFilter()" >Apply</button>
+                      <button class="btn btn-success"  routerLink="/admin/all" >go to Products</button>
+                  </div>
+          </div>
+      </form>
+
+        <div class="card mb-3" *ngFor="let item of carts">
+          <div class="card-body p-4">
+
+            <div class="row align-items-center"  >
+              <!-- 1 -->
+              <div class="col-md-2 d-flex justify-content-center">
+                <div>
+                  <h3 class="small  text-center">UserId</h3>
+                  <p class="lead fw-normal mb-0">{{item. userId}}</p>
+                </div>
+              </div>
+              <!-- 2 -->
+              <div class="col-md-2 d-flex justify-content-center">
+                <div>
+                  <h3 class="small  text-center">ProductId</h3>
+                  <p class="lead fw-normal mb-0">{{item.id}}</p>
+                </div>
+              </div>
+              <!-- 2 -->
+              <div class="col-md-4 d-flex justify-content-center">
+                <div>
+                  <h3 class="small  text-center">Date</h3>
+                  <p class="lead fw-normal mb-0">{{item.date|date}}</p>
+                </div>
+              </div>
+              <!-- 3 -->
+              <div class="col-md-2  d-flex justify-content-center">
+                <div>
+                  <p class="small  text-center ">Quantity</p>
+                  <p class="lead fw-normal mb-0">{{item.products.length}}</p>
+
+
+                  <p class="lead fw-normal mb-0"></p>
+
+                  <p class="lead fw-normal mb-0"></p>
+                </div>
+              </div>
+
+
+
+                <!-- 5 -->
+
+
+
+
+              <!-- 6 -->
+              <div class="col-md-2 d-flex justify-content-center ">
+                <div>
+                  <p class="small text-muted mb-4 pb-2"></p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="view(item.id)">
+                    View
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content  ">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body ">
+                          <!-- ... model -->
+                          <div class="card mb-3">
+                            <div class="card-body p-4  ">
+
+                              <div class="row align-items-center" *ngFor="let item of products; let index = index  " >
+                                <!-- 1 -->
+                                <div class="col-md-2">
+                                  <img src="{{item.item.image}}"
+                                    class="img-fluid" alt="Generic placeholder image">
+                                </div>
+                                <!-- 2 -->
+                                <div class="col-md-4 d-flex justify-content-center">
+                                  <div>
+                                    <p class="small mb-3 text-center ">Name</p>
+                                    <p class="small  text-center">{{item.item.title | slice:0:15}}</p>
+
+                                  </div>
+                                </div>
+                                <!-- 3 -->
+                                <div class="col-md-2  d-flex justify-content-center">
+                                  <div>
+                                    <p class="small mb-3 text-center ">Quantity</p>
+                                    <p class="small  text-center ">{{item.quantity}}</p>
+
+
+
+
+                                    <p class="lead fw-normal mb-0"></p>
+                                  </div>
+                                </div>
+
+                                     <!--4 -->
+                                <div class="col-md-2 d-flex justify-content-center">
+                                  <div>
+                                    <p class="small mb-3 text-center ">Price</p>
+                                    <p class="small  text-center ">{{item.item.price}}</p>
+                                  </div>
+                                </div>
+                                  <!-- 5 -->
+
+
+                                <div class="col-md-2 d-flex justify-content-center">
+                                  <div>
+                                    <p class="small mb-3  text-center ">Total</p>
+                                    <p class="small  text-center ">{{item.item.price*item.quantity}}</p>
+                                  </div>
+                                </div>
+                                <!-- 6 -->
+
+                              </div>
+
+                            </div>
+                          </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-danger mx-2"  (click)=" deleteCart(item.id)">delete</button>
+
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>

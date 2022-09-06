@@ -1,0 +1,5 @@
+<select class="form-select  text-light btn  bg-dark" aria-label="Default select example" (click)="detectchanges($event)">
+  <option class=" text-light" *ngIf=" category" selected>Categories</option>
+ <option class=" text-light" value="{{ item}}" [selected]= " select" *ngFor="let item  of  data"   >{{ item}}</option>
+
+</select>

@@ -1,0 +1,130 @@
+<section  style="background-color: #fcd9cd;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+
+        <!-- 111 --> <div>
+                  <p class="small text-muted mb-4 pb-2"></p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                    Add Product
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade   text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog  text-center ">
+                      <div class="modal-content    "   style="width:40rem ;" >
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body   ">
+                          <!-- ... model -->
+                          <div class="card mb-3  ">
+                            <div class="card-body p-5   ">
+
+                              <form [formGroup]="form" >
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-12">
+                                        <label for="">Title</label>
+                                        <input type="text" formControlName="title" class="form-control" placeholder="title">
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <label for="">Price</label>
+                                        <input type="number"  formControlName="price" class="form-control" placeholder="price">
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                      <label for="">category</label>
+                                        <!-- <app-select [data]="categories" [title]="'Categories'" (selectedValue)="getSelectedCategory($event)" [all]="false" [select]="form.value.category" ></app-select> -->
+                                        <app-select class="form-control"[category]="false" [data]="categories"  (selectetvalue)="getSelectedCategory($event)" [select]="form.value.category" ></app-select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <label for="image">Image</label>
+                                        <img src="{{base64}}" style="width: 100px; height:75px; " alt="">
+                                        <input type="file" class="form-control" (change)="getImagePath($event)" >
+                                    </div>
+                                    <div class="col-md-8 col-sm-12">
+                                        <label for="image">Description</label>
+                                        <textarea  class="form-control"  formControlName="description" placeholder="type here .. "></textarea>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end mt-3">
+                                    <button class="btn btn-success" [disabled]="!form.valid" (click)="addProduct()">Add Product</button>
+                                </div>
+                            </form>
+
+                            </div>
+                          </div>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+        <div class="card mb-3">
+          <div class="card-body p-4">
+
+            <div class="row align-items-center" *ngFor="let item of  products" >
+              <!-- 1 -->
+              <div class="col-md-1">
+                <img src="{{item.image}}"
+                  class="img-fluid" alt="Generic placeholder image">
+              </div>
+              <!-- 2 -->
+              <div class="col-md-5 d-flex justify-content-center">
+                <div>
+                  <p class="small  text-center ">Name</p>
+                  <p class="lead fw-normal mb-0">{{item.title | slice:0:50}}</p>
+                </div>
+              </div>
+              <!-- 3 -->
+              <div class="col-md-2  d-flex justify-content-center">
+                <div>
+                  <p class="small  text-center ">Category</p>
+
+                  <p class="lead fw-normal mb-0">{{item.category}}</p>
+
+
+                </div>
+              </div>
+
+                   <!--4 -->
+              <div class="col-md-2 d-flex justify-content-center">
+                <div>
+                  <p class="small text-muted mb-4 pb-2">Price</p>
+                  <p class="lead fw-normal mb-0">{{item.price }}</p>
+                </div>
+              </div>
+                <!-- 5 -->
+
+
+
+              <!-- 6 -->
+              <div class="col-md-2 d-flex justify-content-center">
+                <div>
+                  <p class="small text-muted mb-4 pb-2"></p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="update(item)" >
+                   Update
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+<app-spiner *ngIf=" loading"></app-spiner>

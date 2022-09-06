@@ -1,0 +1,33 @@
+
+
+
+<app-crosal></app-crosal>
+
+<app-select [data]="catogerylist"  (selectetvalue)="Recivevalue($event)"></app-select>
+
+
+
+<div>
+  <div *ngIf="!louding" class="container px-1 px-lg-5 mt-2 "    >
+    <div class="row gx-1 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" >
+      <div class="col mb-1" *ngFor="let item of    productlist" >
+      <app-prouduct [data]= "item"  (item)="Addtocart($event)"></app-prouduct>
+  </div>
+   </div>
+  </div>
+</div>
+
+
+<section *ngIf="louding" class="text-center mt-md-5 w-100 ">
+  <app-spiner></app-spiner>
+</section>
+
+<app-footer (svalue)="Recivevalue($event)"></app-footer>
+
+
+
+
+
+
+
+

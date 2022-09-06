@@ -1,0 +1,49 @@
+.box {
+  transition: .5s all ease-in-out;
+  /* position: relative; */
+  margin-top: 4rem;
+}
+.box:hover{
+  transform: translateY(-20%);
+}
+.box:hover .icons{
+  opacity: 1;
+
+}
+.icons{
+  width: 100%;
+
+  padding: .5rem;
+  display: flex;
+  justify-content: space-around;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+.fa-brands{
+  color: white;
+  padding: .5rem;
+  border: 1px solid white;
+  border-radius: 50%;
+  transition: .3s all ease-in-out;
+}
+.fa-brands:hover {
+  color: rgb(238, 36, 69);
+  background-color: white;
+  opacity: 0;
+
+
+}
+
+*{
+  /* font-family: "Lucida Console", "Courier New", monospace; */
+  font-size: 16px;
+}
+
+img{
+  width: 200px;
+  height: 200px;
+}
