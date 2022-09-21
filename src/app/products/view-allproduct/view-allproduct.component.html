@@ -1,9 +1,12 @@
 
 
 
-<app-crosal></app-crosal>
+<div class="mt-1">
+  
+  <app-select  [data]="catogerylist"  (selectetvalue)="Recivevalue($event)"></app-select>
+</div>
 
-<app-select [data]="catogerylist"  (selectetvalue)="Recivevalue($event)"></app-select>
+
 
 
 
